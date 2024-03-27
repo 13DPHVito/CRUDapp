@@ -1,0 +1,87 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+ 
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;  
+ 
+    background: rgb(29,28,38);
+    background: linear-gradient(90deg, rgba(29,28,38,1) 0%, rgba(36,28,28,1) 100%); 
+
+    color: white !important;
+}
+
+ 
+.loginContainer 
+{
+    justify-content: center;
+    display: flex;
+}
+    
+.loginContainer input 
+{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: rgb(30, 30, 30);
+    -moz-box-shadow: 0 0 3px #272727;
+    -webkit-box-shadow: 0 0 3px #303030;
+    box-shadow: 0 0 3px #242424;
+    border: none;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);  
+    color: white;
+ 
+}
+.loginContainer form 
+{
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 1rem;
+    margin-top: 10%;
+    font-size: 16px; 
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+    justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+}
+ 
+
+.loginContainer form button 
+{
+    display: flex;
+    width: 100%;
+    background-color: rgb(0, 122, 75);
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+.loginContainer form button:hover 
+{
+    background-color: rgb(0, 88, 55);
+
+}
+.passwordContainer 
+
+{
+    justify-content: space-between;
+    display: flex;
+    width: 130%;
+
+}
+a 
+{
+    color: white !important;
+}
+.header 
+{
+    padding: 3rem 9rem 3rem 9rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}

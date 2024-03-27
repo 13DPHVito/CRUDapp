@@ -11,22 +11,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="background-container"></div>
+<div class="background-container">
+    
+</div>
+
+<div class="header">
+   
+    @csrf
+    <form action="/logout" method="POST">
+        @auth
+        {{ auth()->user()->name }}</a>
+        @endauth
+        @csrf
+        <button>Log Out</button>
+
+    </form>
+ 
+ 
+
+</div>
  <div class="contents"> 
 <div class="introductionText">
 <div class="bothCon"> 
 <div class="firstCon">
  
 @auth
-<p>You are Logged in</p>
-<form action="/logout" method="POST">
-    @csrf
-    <button>Log Out</button>
-</form>
+ 
 
-<div>
-    <h2>Create a new Post</h2>
+<div class="postDiscussion">
     <form action="/create-post" method="POST">
+    <h2>Create a new Post</h2>
     @csrf 
     <input type="text" name="title" placeholder="title">
     <textarea name="body" placeholder="body content..."></textarea> 
@@ -36,10 +50,12 @@
     </form>
 </div>
 
+<div class="postContainer">
 <div>
 <h2>All Posts</h2>
 @foreach($posts as $post)
-<div>
+<div class="post">
+ 
     <h3>{{$post['title']}} by {{$post->user->name}}
     <h3>{{$post['Title']}}</h3>
     {{$post['body']}}
@@ -79,6 +95,4 @@
 @endauth
 
 </div>
-<div class="ownerName">
-<a>Lepre</a>
-</div>
+ 

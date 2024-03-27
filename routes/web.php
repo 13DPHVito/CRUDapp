@@ -17,7 +17,10 @@ use App\Http\Models\User\userPosts;
 |
 */
 
-
+Route::get('/', function () {
+     return view('login');
+ });
+ 
 
 Route::get('/', function () {
  
@@ -25,12 +28,18 @@ Route::get('/', function () {
      return view('home', ['posts' => $posts]);
 });
 
+Route::get('/register', function () {
+     return view('register'); // Assuming you have a view for registration
+ });
+ 
+
 Route::post('register', [UserController::class, 'register']);
 Route::post('/logout',[UserController::class, 'logout']);
 Route::post('login',[UserController::class, 'login']);
 
-Route::get('/loginregister', function () {
-     return view('loginregister'); // Directly return the view here
+
+Route::get('/login', function () {
+     return view('login'); // Directly return the view here
  });
 // blog posts and stuff
 
