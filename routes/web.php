@@ -4,47 +4,25 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Http\Models\User\userPosts;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
-     return view('login');
- });
- 
-
-Route::get('/', function () {
- 
-     $posts = Post::where('user_id', auth()->id())->get();
-     return view('home', ['posts' => $posts]);
+    return view('home');
 });
 
-Route::get('/register', function () {
-     return view('register'); // Assuming you have a view for registration
+Route::get('/posts', function () {
+    $posts = Post::with('user')->get();  // Fetch posts with their associated user
+    return view('posts', ['posts' => $posts]);
+});
+
+Route::get('/auth', function () {
+     return view('auth');
  });
- 
 
-Route::post('register', [UserController::class, 'register']);
-Route::post('/logout',[UserController::class, 'logout']);
-Route::post('login',[UserController::class, 'login']);
-
-
-Route::get('/login', function () {
-     return view('login'); // Directly return the view here
- });
-// blog posts and stuff
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post/{post}',[PostController::class, "showEditScreen"]);
-Route::put('/edit-post/{post}',[PostController::class, "actuallyUpdatePost"]);
-Route::delete('/delete-post/{post}', [PostController::class, "deletePost"]);
-
+Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
+Route::put('/edit-post/{post}', [PostController::class, 'actuallyUpdatePost']);
+Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);

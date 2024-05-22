@@ -40,11 +40,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
 
-    public function userPosts()
-    {
+    public function usersCoolPosts() {
         return $this->hasMany(Post::class, 'user_id');
     }
+
 }

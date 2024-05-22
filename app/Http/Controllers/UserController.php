@@ -4,55 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
-    {
-    
-        
-
+    public function login(Request $request) {
         $incomingFields = $request->validate([
             'loginname' => 'required',
             'loginpassword' => 'required'
         ]);
-    
-        // Attempt to authenticate the user
-        if (Auth::attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
-            // Authentication successful
+
+        if (auth()->attempt(['name' => $incomingFields['loginname'], 'password' => $incomingFields['loginpassword']])) {
             $request->session()->regenerate();
-             // Redirect to the intended URL or any other desired URL
-            return redirect()->intended('/');
         }
-    
-        // Authentication failed, redirect back with errors
-        return redirect()->back()->withInput()->withErrors(['loginname' => 'Invalid credentials']);
-    }
-    
-    
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
+        return redirect('/posts');
     }
 
-    public function register(Request $request)
-    {
+    public function logout() {
+        auth()->logout();
+        return redirect('/');
+    }
+
+    public function register(Request $request) {
         $incomingFields = $request->validate([
-            'name' => ['required', 'min:3', 'max:255', Rule::unique('users', 'name')],
+            'name' => ['required', 'min:3', 'max:10', Rule::unique('users', 'name')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:8', 'max:255']
+            'password' => ['required', 'min:8', 'max:200']
         ]);
 
-        $incomingFields['password'] = Hash::make($incomingFields['password']);
+        $incomingFields['password'] = bcrypt($incomingFields['password']);
         $user = User::create($incomingFields);
-
-        Auth::login($user);
-
+        auth()->login($user);
         return redirect('/');
     }
 }
