@@ -1,0 +1,154 @@
+/* public/css/goals.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.goal-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.goal-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #e9e9e9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.goal-list li input[type="checkbox"] {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+.goal-list li label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.goal-list li p {
+    margin: 5px 0;
+}
+
+.goal-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.goal-form input[type="text"],
+.goal-form textarea,
+.goal-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.header {
+    overflow: hidden;
+    background-color: #26272b;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background-color: rgba(38, 39, 43, 0.98);
+    backdrop-filter: blur(15px);
+   
+  }
+  img {
+    width: auto;
+    height: 120px;
+  }
+  .header button {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+  
+  .header-contents {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 15%;
+    margin-right: 15%;  
+    color: white !important;
+  }
+  .header a{
+    color: white !important;
+  }
+  
+  .header-right {
+    display: flex;
+    gap: 4vh;
+    margin-left: auto;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 40px;
+    border-radius: 4px;
+    gap: 30px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    text-decoration: underline;
+    text-decoration-color: #4CAF50;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px;
+  }
+  
+  .header-right {
+    float: right;
+  }
+  

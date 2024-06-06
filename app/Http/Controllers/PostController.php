@@ -11,12 +11,15 @@ class PostController extends Controller
         if (auth()->user()->id === $post['user_id']) {
             $post->delete();
         }
-        return redirect('/');
+        return redirect('/posts');
+
     }
 
     public function actuallyUpdatePost(Post $post, Request $request) {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/');
+            return redirect('/posts');
+
+
         }
 
         $incomingFields = $request->validate([
@@ -28,12 +31,14 @@ class PostController extends Controller
         $incomingFields['body'] = strip_tags($incomingFields['body']);
 
         $post->update($incomingFields);
-        return redirect('/');
+        return redirect('/posts');
+
+
     }
 
     public function showEditScreen(Post $post) {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/');
+            return redirect('/posts');
         }
 
         return view('edit-post', ['post' => $post]);
@@ -49,6 +54,6 @@ class PostController extends Controller
         $incomingFields['body'] = strip_tags($incomingFields['body']);
         $incomingFields['user_id'] = auth()->id();
         Post::create($incomingFields);
-        return redirect('/');
+        return redirect('/posts');
     }
 }
